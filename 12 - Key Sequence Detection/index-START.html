@@ -7,6 +7,17 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const secretCode = "getjob";
+  window.addEventListener('keyup', e => {
+    pressed.push(e.key);
+    console.log(pressed);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+    if (pressed.join('') === secretCode) {
+      console.log("you did it!")
+      cornify_add();
+    }
+  });
 </script>
 </body>
 </html>
