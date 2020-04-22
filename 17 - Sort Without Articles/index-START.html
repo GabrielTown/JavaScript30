@@ -10,7 +10,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background: lightgoldenrodyellow;
       background-size: cover;
       display: flex;
       align-items: center;
@@ -19,8 +19,8 @@
 
     #bands {
       list-style: inside square;
-      font-size: 20px;
-      background: white;
+      font-size: 15px;
+      background: palegoldenrod;
       width: 500px;
       margin: auto;
       padding: 0;
@@ -28,8 +28,8 @@
     }
     
     #bands li {
-      border-bottom: 1px solid #efefef;
-      padding: 20px;
+      border-bottom: 3px solid #efefef;
+      padding: 15px;
     }
     
     #bands li:last-child {
@@ -47,6 +47,16 @@
 
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+removeArticle = (band) => {
+  const articles = ['The', 'A', 'An'];
+  const bandArr = band.split(" ");
+  return articles.includes(bandArr[0]) ? bandArr.splice(1).join(' ') : band;
+};
+
+const sortedBands = bands.sort((a, b) => removeArticle(a) > removeArticle(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
 
 
 </script>
